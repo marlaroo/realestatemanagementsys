@@ -1,0 +1,52 @@
+package rent;
+
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+public class RentInClientTableModel extends AbstractTableModel{
+	public static final int INDEX=0;
+	public static final int CUSTOMERNAME=1;
+	public static final int CUSTOMERNRC=2;
+	static int j=0;
+	
+	private String title[]= {"NO","CLIENTNAME","CLIENTNRC"};
+	private ArrayList<rent>c=new ArrayList<rent>();
+	
+	public RentInClientTableModel(ArrayList<rent>client) {
+		c=client;
+	}
+	public String getColumnName(int col) {
+		return title[col];
+	}
+	
+
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return c.size();
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return title.length;
+	}
+
+	@Override
+	public Object getValueAt(int row, int column) {
+		// TODO Auto-generated method stub
+		rent client=c.get(row);
+		switch(column) {
+		case INDEX:return client.getCustomer_id();
+		case CUSTOMERNAME:return client.getCustomer_name();
+		case CUSTOMERNRC:return client.getCustomer_nrc();
+		
+		}
+	
+		
+		return null;
+	}
+
+}
